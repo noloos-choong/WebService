@@ -4,9 +4,11 @@ var fs = require('fs');
 
 const app = express()
 app.use(cors());
-app.use(express.static('..\\html'));
+app.use(express.static(__dirname+'\\html'));
 
-const ctrl = require("./about");
+const ctrl = require("./cont/about");
+
+console.log("처음 시작 : "+__dirname);
 
 /*
 app.get('/', (req, res) => {
@@ -20,13 +22,13 @@ app.get('/', (req, res) => {
 app.get('/pic/:Pname', (req, res) => {
   const {Pname} = req.params;
   console.log("이미지 호출 : "+Pname);
-  if(fs.existsSync(`..\\html\\img\\${Pname}.png`)){
-    fs.readFile(`..\\html\\img\\${Pname}.png`, function(error, data){
+  if(fs.existsSync(__dirname+`\\html\\img\\${Pname}.png`)){
+    fs.readFile(__dirname+`\\html\\img\\${Pname}.png`, function(error, data){
       res.end(data);
     });
   }else{
     //디폴트 이미지 뿌려주기
-    fs.readFile("..\\html\\img\\PrepareImage.png", function(error, data){
+    fs.readFile(__dirname+"\\html\\img\\PrepareImage.png", function(error, data){
       res.end(data);
     });
   }
@@ -53,7 +55,7 @@ app.get('/pic/:Pname', (req, res) => {
     const { name }=req.params;
     console.log("받은 값 : "+name); // 사용자가 던진 URL을 이런식으로 받을 수 있구나
 
-    fs.readFile(`..\\html\\${name}.html`, function(error, data){
+    fs.readFile(__dirname+`\\html\\${name}.html`, function(error, data){
         console.log(__dirname);
         console.log(name+"접근");
         res.writeHead(200, {'Content-Type' : 'text/html'});
@@ -65,8 +67,6 @@ app.get('/pic/:Pname', (req, res) => {
 
 
 
-
-
 app.get('/', function (req, res) {
     console.log(req.url); // 사용자가 던진 URL을 이런식으로 받을 수 있구나
 
@@ -75,7 +75,7 @@ app.get('/', function (req, res) {
     //res.set('Content-Type', 'text/html');
     //res.send('<h1>Hello, World!</h1>');
 
-    fs.readFile("..\\html\\index.html", function(error, data){
+    fs.readFile(__dirname+"\\html\\index.html", function(error, data){
         console.log(__dirname);
         res.writeHead(200, {'Content-Type' : 'text/html'});
         res.end(data);

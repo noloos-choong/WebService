@@ -6,7 +6,7 @@ const app = express()
 app.use(cors());
 app.use(express.static(__dirname+'\\html'));
 
-const ctrl = require("./cont/about");
+//const ctrl = require("./about");
 
 console.log("처음 시작 : "+__dirname);
 
@@ -66,7 +66,7 @@ app.get('/pic/:Pname', (req, res) => {
   //app.get('/image', ctrl.Love);
 
 
-
+/*
 app.get('/', function (req, res) {
     console.log(req.url); // 사용자가 던진 URL을 이런식으로 받을 수 있구나
 
@@ -75,11 +75,12 @@ app.get('/', function (req, res) {
     //res.set('Content-Type', 'text/html');
     //res.send('<h1>Hello, World!</h1>');
 
-    fs.readFile(__dirname+"\\html\\index.html", function(error, data){
+    fs.readFile("..\\html\\index.html", function(error, data){
         console.log(__dirname);
         res.writeHead(200, {'Content-Type' : 'text/html'});
         res.end(data);
     })
+    
     //res.writeHead(200, {'Content-Type' : 'text/html'});
     //res.end(fs.readFileSync(__dirname+"\\View\\index.html","utf8"));
 
@@ -91,12 +92,16 @@ app.get('/', function (req, res) {
     res.writeHead(200, {'Content-Type' : 'text/html'});
     res.end(data);
   })
+
+  }); //여기만 짜르자
   */
 
   //res.send("D:\웹사이트 구축\예시\Restoran Free Website Template - Free-CSS.com\bootstrap-restaurant-template/index.html");
 
   
-})
+
+
+
 /*
 app.get('/user/:id', function (req, res) {
     //res.send('Hello World')
